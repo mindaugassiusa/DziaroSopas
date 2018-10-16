@@ -1,0 +1,22 @@
+﻿@using DataContract
+@model CustomerModel
+@{
+    ViewBag.Title = "Edit Active Order";
+}
+
+<h2>Edit Active Orders</h2>
+<li>@Html.ActionLink("Back To Inventory", "GetActiveOrders", "Inventory")</li>
+@using (Html.BeginForm("SaveEditedOrder", "Inventory", FormMethod.Post))
+{
+    <div>
+        @Html.HiddenFor(m=>m.Id)
+        @Html.HiddenFor(m=>m.IsOrdered)
+        @Html.TextBoxFor(m => Model.Name, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => Model.Price, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => Model.Quantity, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => Model.Description, new { @class = "col-md-2 control-label" })
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+}

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2> Active Orders:</h2>
+<body>
+    <select>
+        @using (Html.BeginForm("Orders", "Admin", FormMethod.Get))
+        {
+
+            <option> Select an active order.</option>
+            foreach (var order in Model)
+            {
+                <option> @order.Name </option>
+                <option> @order.Quantity </option>
+            }
+
+        }
+    </select>
+
+<div>
+    <button type="submit"> Update order list</button>
+</div>
+</body>
+
+<h2>Orders</h2>
+

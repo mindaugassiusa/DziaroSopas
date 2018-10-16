@@ -1,0 +1,14 @@
+﻿@using DataContract 
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>Admin</h2>
+<div>
+
+    <div>
+        <p>@Html.ActionLink("Inventory", "GetInventory", "Inventory")</p>
+        <p>@Html.ActionLink("Active Orders", "GetActiveOrders", "Inventory")</p>
+        <p>@Html.ActionLink("Add new product", "AddNewProduct", "Inventory")</p>
+    </div>
+</div>

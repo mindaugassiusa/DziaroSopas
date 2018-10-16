@@ -1,0 +1,15 @@
+﻿@using DataContract
+@model CustomerModel
+@{
+    ViewBag.Title = "AddNewProduct";
+}
+
+<h2>AddNewProduct</h2>
+@using (Html.BeginForm("AddNewProduct", "Inventory", FormMethod.Post))
+{
+@Html.TextBoxFor(m => Model.Name, new { placeholder = "Name", @class = "col-md-2 control-label" })
+@Html.TextBoxFor(m => Model.Price, new { placeholder = "Price", @class = "col-md-2 control-label" })
+@Html.TextBoxFor(m => Model.Quantity, new { placeholder = "Quantity", @class = "col-md-2 control-label" })
+@Html.TextBoxFor(m => Model.Description, new { placeholder = "Description", @class = "col-md-2 control-label" })
+<button type="submit">Save</button>
+}

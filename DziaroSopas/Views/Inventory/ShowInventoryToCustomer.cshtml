@@ -1,0 +1,35 @@
+﻿@using DataContract
+@using GridMvc.Html
+@model List<CustomerModel>
+@{
+    ViewBag.Title = "Iventory";
+}
+
+<h2>Inventory</h2>
+<div>
+
+    <div>
+        
+        @using (Html.BeginForm("CustomerMadeOrder", "Inventory", FormMethod.Post))
+        {
+        @Html.Grid(Model).Columns(columns =>
+   {
+       columns.Add(c => c.Name).Titled("Name").Filterable(true);
+       columns.Add(c => c.Price).Titled("Price").Filterable(true);
+       columns.Add(c => c.Description).Titled("Description");
+       columns.Add(c => c.Quantity).Titled("Quantity").Filterable(true).Sanitized(false).Encoded(false); //.RenderValueAs(@Html.EditorFor(c => c.Quantity, new { htmlAttributes = new { @type = "number", @min = "0", @step = "0.01", @value = "0" } }));
+       columns.Add(c => c.Id).Css("hidden").Titled("Id");
+
+   }).WithPaging(3).Sortable(true)
+
+            
+        if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            {
+                <input type="submit" name="Order" class="active" value="Order" />
+            }
+        }
+        }
+    </div>
+</div>
+

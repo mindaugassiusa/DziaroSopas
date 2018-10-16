@@ -1,0 +1,16 @@
+﻿@using DataContract
+@using GridMvc.Html
+@model List<CustomerModel>
+@{
+    ViewBag.Title = "Products";
+}
+<h2>Products</h2>
+
+<div>
+    @Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(c => c.Name).Titled("Name").Filterable(true).Sanitized(false).Encoded(false).RenderValueAs(c => Html.ActionLink(c.Name, "EditActiveOrders", "Inventory", new { id = c.Id }, null).ToHtmlString());
+    columns.Add(c => c.Description).Titled("Description");
+    columns.Add(c => c.Price).Titled("Price").Filterable(true);
+}).WithPaging(3).Sortable(true)
+</div>
